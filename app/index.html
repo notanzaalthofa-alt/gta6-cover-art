@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Neon Coast Cover Studio — GTA-style cover art maker</title>
+<meta name="description" content="Turn your photos into GTA-style multi-panel cover art, offline in your browser.">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div id="app">
+  <header>
+    <h1>Neon Coast <span>Cover Studio</span></h1>
+    <p>Turn your photos into GTA-style cover art. Pick a layout, a sunset grade and a
+    caption, then export a poster-sized PNG. Everything runs offline in your browser —
+    your photos never leave your machine.</p>
+  </header>
+  <main id="editor">
+    <section class="panel controls">
+      <h2>1 · Photos</h2>
+      <div id="photoTray" class="tray"></div>
+      <label class="upload">+ Add your own photos
+        <input id="fileInput" type="file" accept="image/*" multiple hidden>
+      </label>
+      <p class="hint">Click a photo to put it in the selected panel. Click a panel in the
+      preview to select it, then drag inside it to position the photo.</p>
+
+      <h2>2 · Layout</h2>
+      <div id="layoutRow" class="row"></div>
+
+      <h2>3 · Grade</h2>
+      <div id="gradeRow" class="row"></div>
+
+      <h2>4 · Caption</h2>
+      <label class="field">Title
+        <input id="titleInput" type="text" maxlength="24" autocomplete="off">
+      </label>
+      <label class="field">Subtitle
+        <input id="subInput" type="text" maxlength="60" autocomplete="off">
+      </label>
+
+      <h2>5 · Size &amp; export</h2>
+      <div id="sizeRow" class="row"></div>
+      <label class="field">Zoom selected panel
+        <input id="zoomRange" type="range" min="1" max="2.5" step="0.05" value="1">
+      </label>
+      <div id="exportRow" class="row"></div>
+    </section>
+
+    <section class="panel preview-wrap">
+      <p id="panelLabel" class="panel-label"></p>
+      <canvas id="preview"></canvas>
+      <p class="hint">Live preview — drag the photo inside a panel to reposition it,
+      or use the zoom slider.</p>
+    </section>
+  </main>
+  <footer>
+    <p>Lettering: Anton and Pacifico, both under the SIL Open Font License (see
+    <span class="mono">app/fonts/</span>). Sample photos are original scenes drawn for
+    this studio. No Rockstar Games logo, artwork or font is used. Works fully offline.</p>
+  </footer>
+</div>
+<canvas id="shotCanvas" hidden></canvas>
+<script type="module" src="src/studio.js"></script>
+</body>
+</html>
